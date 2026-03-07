@@ -64,3 +64,6 @@ lerna-debug.log*
 
 # Project-specific
 archive/
+
+# Claude Code
+.claude/
