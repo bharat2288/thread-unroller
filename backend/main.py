@@ -31,10 +31,15 @@ from formatters import thread_to_markdown, thread_to_json, thread_to_html, forma
 from media_downloader import download_thread_media, extract_media_urls_from_thread
 
 
+import os
+_debug = os.getenv("DEBUG", "").lower() in ("1", "true", "yes")
 app = FastAPI(
     title="Thread Unroller",
     description="Extract Twitter/X threads into Markdown, JSON, or HTML with media",
     version="1.1.0",
+    docs_url="/docs" if _debug else None,
+    redoc_url="/redoc" if _debug else None,
+    openapi_url="/openapi.json" if _debug else None,
 )
 
 # Configure CORS for frontend
