@@ -4,6 +4,7 @@ Configuration settings for Thread Unroller.
 Paths, timing configs, and other settings.
 """
 
+import os
 from pathlib import Path
 from typing import Dict, Any
 
@@ -11,8 +12,8 @@ from typing import Dict, Any
 PROJECT_ROOT = Path(__file__).parent.parent
 ARCHIVE_DIR = PROJECT_ROOT / "archive"
 
-# Cookie file location (from Twitter Screenshots project)
-COOKIE_FILE = Path(r"C:\Users\bhara\dev\twitter-cookies.json")
+# Cookie file location — set TWITTER_COOKIE_FILE env var, or default to project root
+COOKIE_FILE = Path(os.environ.get("TWITTER_COOKIE_FILE", PROJECT_ROOT.parent / "twitter-cookies.json"))
 
 # Twitter/X domains we recognize
 TWITTER_DOMAINS = {"x.com", "twitter.com", "mobile.twitter.com"}

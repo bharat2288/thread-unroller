@@ -20,7 +20,8 @@ from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright, Page, ElementHandle
 
 # Configuration (duplicated to avoid import issues in subprocess)
-COOKIE_FILE = Path(r"C:\Users\bhara\dev\twitter-cookies.json")
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+COOKIE_FILE = Path(os.environ.get("TWITTER_COOKIE_FILE", _PROJECT_ROOT.parent / "twitter-cookies.json"))
 
 TWITTER_DOMAINS = ["twitter.com", "x.com", "mobile.twitter.com", "mobile.x.com"]
 

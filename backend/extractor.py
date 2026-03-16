@@ -48,16 +48,10 @@ async def extract_thread(
     Runs the extraction in a subprocess to avoid Windows asyncio issues.
     """
     # Get the Python executable from the virtual environment
-    # Try local venv first, then Google Drive venv
     venv_python = Path(__file__).parent / "venv" / "Scripts" / "python.exe"
     if not venv_python.exists():
-        # Try Google Drive venv
-        gdrive_venv = Path(r"C:\Users\bhara\dev\thread-unroller\backend\venv\Scripts\python.exe")
-        if gdrive_venv.exists():
-            venv_python = gdrive_venv
-        else:
-            # Fall back to system Python
-            venv_python = sys.executable
+        # Fall back to system Python
+        venv_python = sys.executable
 
     # Run extraction in subprocess (blocking call in executor)
     # Use longer timeout - extraction can take 30+ seconds
