@@ -70,3 +70,6 @@ specs/
 
 # Claude Code
 .claude/
+
+# Canonical specs live in the private dev-specs repo
+*-home.md
